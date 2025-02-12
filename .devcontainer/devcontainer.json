@@ -1,0 +1,16 @@
+{
+    "name": "Go Weather WebApp",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "settings": {
+        "go.gopath": "/go",
+        "go.toolsGopath": "/go"
+    },
+    "extensions": [
+        "golang.go",
+        "ms-azuretools.vscode-docker"
+    ],
+    "postCreateCommand": "go mod tidy",
+    "remoteUser": "vscode"
+}
