@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Go Weather WebApp</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    </style>
+</head>
+
+<body class="bg-light"
+    style="background-image: url('{{if .BgImage}}{{.BgImage}}{{else}}https://source.unsplash.com/featured/?weather{{end}}');">
+    <div class="container mt-5">
+        <h1 class="mb-4">Weather Lookup</h1>
+        <form method="GET" action="/" class="form-inline mb-4">
+            <input type="text" name="zipcode" class="form-control mr-2" placeholder="Enter bla bla Zipcode" required />
+            <button type="submit" class="btn btn-primary">Lookup</button>
+        </form>
+        {{if .Error}}
+        <div class="alert alert-danger">{{.Error}}</div>
+        {{end}}
+        {{if .Location}}
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">Current Weather</h3>
+                <p class="card-text">
+                    The current weather in {{.Location.City}}, {{.Location.State}} is {{.Weather.Temperature}}ºF, and
+                    {{.Weather.Condition}}.
+                </p>
+            </div>
+        </div>
+        {{end}}
+    </div>
+</body>
+
+</html>
